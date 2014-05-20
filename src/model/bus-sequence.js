@@ -21,8 +21,8 @@ BusSequence.prototype.addRun = function(runId, busStop) {
   var seqArray = [];
   seqArray.push(busStop);  
 
-  this._runs[runId] = seqArray
-}
+  this._runs[runId] = seqArray;
+};
 
 BusSequence.prototype.addStop = function(runId, sequenceId, busStop) {
   busStop._sequenceId = sequenceId;
@@ -32,6 +32,6 @@ BusSequence.prototype.addStop = function(runId, sequenceId, busStop) {
   } else {
     this.addRun(runId, busStop);
   }
-}
+};
 
 module.exports = BusSequence;
