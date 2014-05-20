@@ -5,11 +5,11 @@ var tflApiKey = "ff634865ae7e23fbd9488951e36a7455";
 var tflBaseUrl = "http://data.tfl.gov.uk/tfl/syndication/feeds/";
 var tempDir = "/nodedev/temp/";
 
-var busStopsUrl = tflBaseUrl + "bus-stops.csv?app_id=d081e14d&app_key=" + tflApiKey;
+//var busStopsUrl = tflBaseUrl + "bus-stops.csv?app_id=d081e14d&app_key=" + tflApiKey;
 var busSeqsUrl = tflBaseUrl + "bus-sequences.csv?app_id=d081e14d&app_key=" + tflApiKey;
 
-var busStopsPath = tempDir + "bus-stops-data.csv"
-var busSeqsPath = tempDir + "bus-seqs-data.csv"
+//var busStopsPath = tempDir + "bus-stops-data.csv";
+var busSeqsPath = tempDir + "bus-seqs-data.csv";
 
 //get data
 function getData() {
@@ -32,14 +32,15 @@ function parseData() {
 function indexData(data) {
   
   common.elasticsearchclient.bulkIndex("bus", "route", data, function(err){
-    if(err)
+    if(err) {
       console.log(err);
-     else
+    } else {
       console.log("Success");
+    }
   });
   
 }
 
-//getData();
-parseData();
+getData();
+//parseData();
 //indexData({"1" : {_route: "bang", name: "John"}});
