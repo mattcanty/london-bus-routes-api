@@ -1,10 +1,10 @@
-var common = require("/nodedev/common");
+var elasticsearchclient = require("./elastic-search-client");
 
 function search(query, cb) {
   
   var upperQuery = query.toUpperCase();
 
-  common.elasticsearchclient.get("bus", "route", upperQuery, function(data){
+  elasticsearchclient.get("bus", "route", upperQuery, function(data){
     var error = {};
     
     if (!data) {
