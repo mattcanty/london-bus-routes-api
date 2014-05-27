@@ -1,5 +1,5 @@
-london-bus-routes
-=================
+London Bus Routes API
+=====================
 
 Downloads TFL's London bus route data.
 
