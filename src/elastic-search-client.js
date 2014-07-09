@@ -33,7 +33,7 @@ function get (index, type, id, cb) {
   client.get(index, type, id, {})  
           .on('data', cb)
           .on('done', function(done){})
-          .on('error', function(error){callback(error)})
+          .on('error', function(error){cb(error)})
           .exec();
 }
 
