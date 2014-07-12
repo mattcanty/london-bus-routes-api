@@ -2,7 +2,7 @@
   "name": "bus-routes-api",
   "version": "0.0.2",
   "description": "delivers bus route data for given bus route number",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "jasmine-node spec/"
   },
