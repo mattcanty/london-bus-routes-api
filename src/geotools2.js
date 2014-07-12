@@ -387,9 +387,9 @@ GT_WGS84.prototype.parseString = function(text)
 
 	var str=new String(text);
 
-	//N 51° 53.947 W 000° 10.018
+	//N 51ï¿½ 53.947 W 000ï¿½ 10.018
 
-	var pattern = /([ns])\s*(\d+)[°\s]+(\d+\.\d+)\s+([we])\s*(\d+)[°\s]+(\d+\.\d+)/i;
+	var pattern = /([ns])\s*(\d+)[ï¿½\s]+(\d+\.\d+)\s+([we])\s*(\d+)[ï¿½\s]+(\d+\.\d+)/i;
 	var matches=str.match(pattern);
 	if (matches)
 	{

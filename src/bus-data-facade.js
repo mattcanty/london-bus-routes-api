@@ -1,29 +1,30 @@
-var elasticsearchclient = require("./elastic-search-client");
+//var elasticsearchclient = require("./elastic-search-client");
+var mongoclient = require('./mongodb-client');
 
 function search(query, cb) {
-  
+
   var upperQuery = query.toUpperCase();
 
-  elasticsearchclient.get("bus", "route", upperQuery, function(data){
+  console.log('Looking for route ' + upperQuery);
+
+  mongoclient.get("bus", "route", upperQuery, function(data, err){
     var error = {};
-    
-    if (!data) {
-      error.message = "There is a problem with elastic search!";
+
+    if (err) {
+      error.message = "There is a problem with mongodb!";
       error.code = 503;
       cb(error);
       return;
     }
-    
-    var jsonData = JSON.parse(data);
-    
-    if (jsonData.found === false) {
+
+    if (!data) {
       error.message = "Bus route does not exist";
       error.code = 404;
       cb(error);
       return;
     }
-            
-    cb(undefined, jsonData._source);
+
+    cb(undefined, data);
   });
 }
 

@@ -1,0 +1,34 @@
+{
+  "name": "bus-routes-api",
+  "version": "0.0.2",
+  "description": "delivers bus route data for given bus route number",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-node spec/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/matthewcanty/london-bus-routes-api.git"
+  },
+  "keywords": [
+    "london",
+    "bus",
+    "routes",
+    "bus",
+    "routes",
+    "london",
+    "uk",
+    "tfl"
+  ],
+  "author": "Matthew Canty",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/matthewcanty/london-bus-routes-api/issues"
+  },
+  "dependencies": {
+    "elasticsearchclient": ""
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}

@@ -1,30 +1,31 @@
 var fs = require("fs");
 var http = require("http");
 
-function download(url, saveLocation, callback) {
+function download(url, callback) {
   var data = "";
   var request = http.get(url, function (response) {
-  
+
     console.log("Downloading: " + url);
-  
+
     if ([301, 302].indexOf(response.statusCode) > -1 ) {
-      
+
       console.log("Being redirected...");
-    
-      download(response.headers.location, saveLocation); 
+
+      download(response.headers.location);
       return;
     }
-    
+
     response.on("data", function (chunk) {
       data += chunk;
     });
-    
+
     response.on("end", function (chunk) {
       console.log("Download complete.");
-      save(data, saveLocation, callback);
+
+      callback(data);
     });
   });
-  
+
   request.on("error", function (e) {
     console.log("Error: " + e.message);
   });

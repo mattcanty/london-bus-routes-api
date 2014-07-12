@@ -1,47 +1,32 @@
 var downloader = require("./downloader");
-var elasticsearchclient = require("./elasticsearchclient");
+var mongoclient = require("./mongodb-client");
 var parser = require("./parser");
+var config = require("./../config").tfl;
 
-var tflApiKey = "ff634865ae7e23fbd9488951e36a7455";
-var tflBaseUrl = "http://data.tfl.gov.uk/tfl/syndication/feeds/";
-var tempDir = "/nodedev/temp/";
+var busSeqsUrl = config.base_url + "" + config.api_key;
 
-//var busStopsUrl = tflBaseUrl + "bus-stops.csv?app_id=d081e14d&app_key=" + tflApiKey;
-var busSeqsUrl = tflBaseUrl + "bus-sequences.csv?app_id=d081e14d&app_key=" + tflApiKey;
-
-//var busStopsPath = tempDir + "bus-stops-data.csv";
-var busSeqsPath = tempDir + "bus-seqs-data.csv";
-
-//get data
 function getData() {
-  //common.downloader.download(busStopsUrl, busStopsPath);
-  
   console.log("Downloading data");
-  
-  downloader.download(busSeqsUrl, busSeqsPath, parseData);
+
+  downloader.download(busSeqsUrl, parseData);
 }
 
-//parse csv data
-function parseData() {
+function parseData(data) {
 
   console.log("Parsing data");
-  
-  parser.parseBusSequence(busSeqsPath, indexData);
+
+  parser.parseBusData(data, indexData);
 }
 
-//index data
 function indexData(data) {
-  
-  elasticsearchclient.bulkIndex("bus", "route", data, function(err){
+
+  mongoclient.bulkIndex("bus", "route", data, function(err){
     if(err) {
       console.log(err);
     } else {
       console.log("Success");
     }
   });
-  
 }
 
 getData();
-//parseData();
-//indexData({"1" : {_route: "bang", name: "John"}});
