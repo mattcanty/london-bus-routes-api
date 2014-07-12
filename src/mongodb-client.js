@@ -1,8 +1,8 @@
 var MongoClient = require('mongodb').MongoClient;
-var connnection_string = require('./../config').mongodb.connection_string;
+var connectionString = require('./../config').mongo.connectionString;
 
 function get(index, type, data, callback){
-  MongoClient.connect(connnection_string, function(err, db) {
+  MongoClient.connect(connectionString, function(err, db) {
     if(err) { return console.dir(err); }
 
     console.log(data);
@@ -23,7 +23,7 @@ function get(index, type, data, callback){
 }
 
 function bulkIndex(index, type, data, callback){
-  MongoClient.connect(connnection_string, function(err, db) {
+  MongoClient.connect(connectionString, function(err, db) {
     if(err) { return console.dir(err); }
 
     var collection = db.collection('routes');

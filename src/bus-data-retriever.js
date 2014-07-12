@@ -1,9 +1,9 @@
 var downloader = require("./downloader");
 var mongoclient = require("./mongodb-client");
 var parser = require("./parser");
-var config = require("./../config").tfl;
+var config = require("./..config").tfl;
 
-var busSeqsUrl = config.base_url + "" + config.api_key;
+var busSeqsUrl = 'http://data.tfl.gov.uk/tfl/syndication/feeds/bus-sequences.csv?app_id=d081e14d&app_key=' + config.api_key;
 
 function getData() {
   console.log("Downloading data");
