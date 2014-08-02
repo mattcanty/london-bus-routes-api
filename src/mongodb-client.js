@@ -1,7 +1,7 @@
 var MongoClient = require('mongodb').MongoClient;
 var connectionString = require('./../config').mongo.connectionString;
 
-function get(index, type, data, callback){
+function get(query, callback){
 	MongoClient.connect(connectionString, function(err, db) {
 		if(err) { return console.dir(err); }
 
@@ -9,10 +9,10 @@ function get(index, type, data, callback){
 
 		console.log('Got "routes" collection');
 
-		collection.findOne({'_route':data}, function(err, item) {
-			if(err){
+		collection.findOne(query, function(err, item) {
+			if(err) {
 				console.log(err);
-			}else{
+			} else {
 				console.log(item);
 				callback(item);
 			}
