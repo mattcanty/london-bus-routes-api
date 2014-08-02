@@ -19,7 +19,7 @@ function download(url, callback) {
       data += chunk;
     });
 
-    response.on("end", function (chunk) {
+    response.on("end", function () {
       console.log("Download complete.");
 
       callback(data);
@@ -28,14 +28,6 @@ function download(url, callback) {
 
   request.on("error", function (e) {
     console.log("Error: " + e.message);
-  });
-}
-
-function save(data, saveLocation, callback) {
-  fs.writeFile(saveLocation, data, function (err) {
-    if (err) throw err;
-    console.log('It\'s saved!');
-    callback();
   });
 }
 
