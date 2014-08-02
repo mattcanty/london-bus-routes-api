@@ -32,4 +32,13 @@ function route(response, request){
   }
 }
 
+function importTflData(response, request){
+  console.log('importing tfl data');
+  
+  response.writeHead(200, {"Content-Type": "text/json"});
+  response.write(JSON.stringify({message:'hello'}));
+  response.end();
+}
+
 exports.route = route;
+exports.importTflData = importTflData;

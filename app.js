@@ -6,5 +6,6 @@ console.log("Starting bus routes API");
 
 var handle = {};
 handle.route = requestHandlers.route;
+handle.importtfldata = requestHandlers.importTflData;
 
 server.start(router.route, handle);
