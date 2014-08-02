@@ -5,7 +5,7 @@ var config = require("./../config").tfl;
 
 var busSeqsUrl = 'http://data.tfl.gov.uk/tfl/syndication/feeds/bus-sequences.csv?app_id=d081e14d&app_key=' + config.api_key;
 
-function getData() {
+function importData() {
   console.log("Downloading data");
 
   downloader.download(busSeqsUrl, parseData);
@@ -29,4 +29,4 @@ function indexData(data) {
   });
 }
 
-getData();
+exports.importData = importData;

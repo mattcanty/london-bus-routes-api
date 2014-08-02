@@ -1,4 +1,5 @@
 var busdatafacade = require('./bus-data-facade');
+var tflImporter = require('./tfl-import.js');
 var querystring = require("querystring");
 var util = require('util');
 var url = require('url');
@@ -34,6 +35,8 @@ function route(response, request){
 
 function importTflData(response, request){
   console.log('importing tfl data');
+  
+  tflImporter.importData();
   
   response.writeHead(200, {"Content-Type": "text/json"});
   response.write(JSON.stringify({message:'hello'}));
