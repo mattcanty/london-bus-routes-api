@@ -1,4 +1,3 @@
-//var elasticsearchclient = require("./elastic-search-client");
 var mongoclient = require('./mongodb-client');
 
 function search(query, cb) {
@@ -7,7 +6,7 @@ function search(query, cb) {
 
   console.log('Looking for route ' + upperQuery);
 
-  mongoclient.get("bus", "route", upperQuery, function(data, err){
+  mongoclient.get({'_route':upperQuery}, function(data, err){
     var error = {};
 
     if (err) {
