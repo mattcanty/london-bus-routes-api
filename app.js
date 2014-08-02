@@ -5,6 +5,6 @@ var requestHandlers = require('./src/requestHandlers');
 console.log("Starting bus routes API");
 
 var handle = {};
-handle["route"] = requestHandlers.route;
+handle.route = requestHandlers.route;
 
 server.start(router.route, handle);
