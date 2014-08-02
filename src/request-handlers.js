@@ -25,7 +25,7 @@ function route(response, request){
       response.end();
     });
   } else {
-    var error = {error:{message:"Cannot deal with " + method + " /" + query}};
+    var error = {error:{message:"Cannot deal with " + request.method + " /" + query}};
 
     response.writeHead(400, {"Content-Type": "text/json"});
     response.write(JSON.stringify(error));
